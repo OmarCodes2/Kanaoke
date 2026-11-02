@@ -1,0 +1,95 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.header {
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header h1 {
+  font-size: 24px;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tabs button {
+  flex: 1;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 40px;
+}
+
+.tabContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tabContent h2 {
+  margin-bottom: 16px;
+}
+
+.tabContent p {
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formGroup label {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.fileInput {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.filePath {
+  color: var(--text-muted);
+  font-size: 12px;
+  word-break: break-all;
+}
+
+.error {
+  background-color: rgba(244, 67, 54, 0.1);
+  border: 1px solid var(--error);
+  color: var(--error);
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+
+
+
+
+
+
+

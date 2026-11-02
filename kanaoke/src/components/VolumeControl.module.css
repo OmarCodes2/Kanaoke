@@ -1,0 +1,67 @@
+.control {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 156px;
+  min-height: 38px;
+  box-sizing: border-box;
+  padding: 7px 10px;
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 12px;
+  background: rgba(10, 10, 12, .62);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .2), inset 0 1px 0 rgba(255, 255, 255, .04);
+  color: rgba(255, 255, 255, .72);
+  backdrop-filter: blur(16px) saturate(150%);
+}
+
+.control:focus-within,
+.control:hover {
+  border-color: rgba(255, 255, 255, .2);
+  background: rgba(20, 20, 24, .76);
+  color: #fff;
+}
+
+.control svg {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  fill-rule: evenodd;
+}
+
+.control input {
+  width: 76px;
+  height: 4px;
+  min-width: 0;
+  margin: 0;
+  appearance: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .18);
+  cursor: pointer;
+  outline: none;
+}
+
+.control input::-webkit-slider-thumb {
+  width: 13px;
+  height: 13px;
+  appearance: none;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #ff66aa;
+  box-shadow: 0 0 9px rgba(255, 102, 170, .55);
+}
+
+.control input:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .2), 0 0 12px rgba(255, 102, 170, .7);
+}
+
+.control output {
+  width: 34px;
+  color: rgba(255, 255, 255, .7);
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  text-align: right;
+}

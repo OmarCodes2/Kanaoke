@@ -1,0 +1,6 @@
+# Public assets folder
+# Place static assets like logos, images, etc. here
+# Files in this folder are served at the root URL
+# Example: public/logo.png can be referenced as /logo.png in your code
+
+

@@ -1,0 +1,83 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.compact {
+  gap: 10px;
+}
+
+.message {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.sourcePath {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-secondary);
+  word-break: break-all;
+}
+
+.error {
+  margin: 0;
+  font-size: 13px;
+  color: #f07178;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.primaryButton,
+.secondaryButton {
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.primaryButton {
+  background: var(--accent);
+  border: none;
+  color: white;
+}
+
+.primaryButton:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.secondaryButton {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.secondaryButton:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.primaryButton:disabled,
+.secondaryButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.hint {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.hint a {
+  color: var(--accent);
+}

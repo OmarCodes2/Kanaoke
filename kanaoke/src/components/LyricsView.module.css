@@ -1,0 +1,15 @@
+.lyricsView { display: flex; flex: 1; flex-direction: column; gap: 12px; height: 100%; min-height: 0; padding: 28px clamp(24px, 6vw, 88px); overflow-y: auto; scroll-behavior: smooth; }
+.lyricsView::-webkit-scrollbar, .tokenizedLyrics::-webkit-scrollbar { width: 8px; }
+.lyricsView::-webkit-scrollbar-thumb, .tokenizedLyrics::-webkit-scrollbar-thumb { border: 2px solid transparent; border-radius: 999px; background: rgba(255,255,255,.3); background-clip: padding-box; }
+.lyricsLine { display: flex; flex-shrink: 0; flex-direction: column; gap: 5px; min-height: 64px; padding: 16px 20px; border: 1px solid transparent; border-radius: 14px; color: rgba(255,255,255,.5); opacity: .58; transition: opacity .22s cubic-bezier(.4,0,.2,1), transform .22s cubic-bezier(.4,0,.2,1), background .22s cubic-bezier(.4,0,.2,1), border-color .22s cubic-bezier(.4,0,.2,1); }
+.lyricsLine.active { min-height: auto; border-color: rgba(255,255,255,.13); background: linear-gradient(110deg, rgba(255,102,170,.16), rgba(170,102,255,.07)); box-shadow: inset 3px 0 0 #ff66aa, 0 10px 28px rgba(0,0,0,.18); color: #fff; opacity: 1; transform: translateX(4px); }
+.lyricsJa { font-size: 26px; font-weight: 600; line-height: 1.55; letter-spacing: .01em; }
+.lyricsRomaji { color: rgba(255,255,255,.48); font-size: 16px; font-style: italic; line-height: 1.5; }
+.lyricsLine.active .lyricsRomaji { color: rgba(255,255,255,.82); }
+.lyricsEn { margin-top: 2px; color: rgba(255,255,255,.42); font-size: 14px; line-height: 1.55; }
+.singMode { gap: 22px; padding: 42px clamp(30px, 9vw, 140px); }
+.singMode .lyricsLine { align-items: center; min-height: 132px; padding: 28px 32px; text-align: center; }
+.singMode .lyricsJa { font-size: clamp(32px, 3.4vw, 52px); font-weight: 700; line-height: 1.34; letter-spacing: -.02em; }
+.singMode .lyricsRomaji { font-size: clamp(18px, 1.8vw, 25px); }
+.singMode .lyricsEn { font-size: clamp(15px, 1.4vw, 19px); }
+.singMode .lyricsLine.active { background: linear-gradient(110deg, rgba(255,102,170,.18), rgba(170,102,255,.1)); box-shadow: inset 0 3px 0 #ff66aa, 0 16px 45px rgba(0,0,0,.25), 0 0 34px rgba(255,102,170,.09); transform: scale(1.015); }

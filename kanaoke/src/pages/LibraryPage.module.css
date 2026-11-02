@@ -1,0 +1,435 @@
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: visible; /* Changed to allow fixed background to be visible */
+  background: #0d0d0d;
+}
+
+/* osu!-style Background with parallax effect */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  overflow: visible; /* Changed from hidden to allow parallax movement */
+  will-change: transform;
+  pointer-events: none;
+}
+
+.backgroundImageContainer {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  /* Parallax transform applied via useParallax hook */
+  pointer-events: none;
+}
+
+.backgroundImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(60px) brightness(0.25) saturate(1.3) contrast(1.1);
+  /* Transform removed - handled by parent container for parallax */
+  transition: filter 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  user-select: none;
+}
+
+.backgroundOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(13, 13, 13, 0.92) 0%,
+    rgba(13, 13, 13, 0.88) 50%,
+    rgba(13, 13, 13, 0.92) 100%
+  );
+  backdrop-filter: blur(1px);
+  pointer-events: none;
+}
+
+.backgroundGradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.05) 30%,
+    #0d0d0d 70%
+  );
+  animation: gradientPulse 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes gradientPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Main content */
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* osu!-style Right sidebar */
+.sidebar {
+  width: 480px;
+  min-width: 480px;
+  background: rgba(13, 13, 13, 0.75);
+  backdrop-filter: blur(30px) saturate(180%);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: -4px 0 40px rgba(0, 0, 0, 0.6);
+  position: relative;
+  z-index: 100;
+  pointer-events: auto;
+}
+
+.sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    270deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.header {
+  padding: 24px 32px 16px 32px;
+  background: rgba(13, 13, 13, 0.75);
+  backdrop-filter: blur(30px) saturate(180%);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.appTitle {
+  font-size: 36px;
+  font-weight: 900;
+  margin: 0;
+  line-height: 1;
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.logo {
+  height: 72px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iconButton {
+  width: 43px;
+  height: 43px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(26, 26, 26, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  transform: none;
+}
+
+.iconButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+  border-radius: 13px;
+}
+
+.iconButton:hover::before {
+  left: 100%;
+}
+
+.iconButton:hover {
+  background: rgba(40, 40, 40, 0.8);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 1);
+  transform: none;
+}
+
+.iconButton:active {
+  transform: none;
+}
+
+.iconButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+.iconButton svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 2;
+}
+
+.iconButtonActive {
+  border-color: rgba(255, 107, 157, 0.6);
+  color: rgba(255, 107, 157, 1);
+}
+
+.dictionaryPanel {
+  margin: 0 16px 12px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: rgba(26, 26, 26, 0.85);
+  backdrop-filter: blur(10px);
+}
+
+
+
+
+.songList {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px 0;
+  scroll-behavior: smooth;
+  position: relative;
+  z-index: 10;
+}
+
+/* osu!-style scrollbar */
+.songList::-webkit-scrollbar {
+  width: 8px;
+}
+
+.songList::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.songList::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.songList::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+  background-clip: padding-box;
+}
+
+.loading,
+.empty,
+.error {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.error {
+  color: var(--error);
+  background: rgba(255, 102, 102, 0.1);
+  border: 1px solid rgba(255, 102, 102, 0.3);
+  border-radius: 12px;
+  margin: 20px;
+  padding: 16px;
+}
+
+
+/* osu!-style Left preview panel */
+.preview {
+  flex: 1;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: transparent;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+.preview::-webkit-scrollbar {
+  width: 8px;
+}
+
+.preview::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.preview::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.preview::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+  background-clip: padding-box;
+}
+
+.noSelection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.noSelectionContent {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.noSelectionContent h2 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  letter-spacing: -0.5px;
+}
+
+.noSelectionContent p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.3px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .sidebar {
+    width: 400px;
+    min-width: 400px;
+  }
+}
+
+/* osu!-style loading animation */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.loading::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: rgba(255, 255, 255, 1);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.empty {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  line-height: 1.6;
+}
+
+.error {
+  color: rgba(255, 102, 102, 0.9);
+  background: rgba(255, 102, 102, 0.1);
+  border: 1px solid rgba(255, 102, 102, 0.3);
+  border-radius: 8px;
+  margin: 20px;
+  padding: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  backdrop-filter: blur(10px);
+  animation: shake 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+
